@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<header>
+    <div class="nav-bar">
+        <h1>Nettside Navn</h1>
+        <button>Logg ut</button>
+    </div>
+</header>
+<main>
+    <h2 class="tittel">Emne Navn</h2>
+    <h3>Meldinger</h3>
+    <div class="meldinger">
+        <div class="melding">
+            <p>lorem ipsum</p>
+            <button>Svar</button>
+        </div>
+        <div class="melding">
+            <p>lorem ipsum</p>
+            <button>Svar</button>
+        </div>
+        <div class="melding">
+            <p>lorem ipsum</p>
+            <button>Svar</button>
+        </div>
+    </div>
+</main>
+<footer>
+    <p>Footer Info</p>
+</footer>
+</body>
+</html>
+
+<style>
+    .nav-bar {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    .tittel {
+        display: flex;
+        justify-content: center;
+    }
+    h3 {
+        display: flex;
+        justify-content: center;
+    }
+    .meldinger {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+    .melding {
+        border: solid black;
+    }
+</style>
