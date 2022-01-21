@@ -8,18 +8,21 @@
 <body>
   <div class="wrapper">
     <h2>Registrering Student</h2>
-    <form action="#">
+    <form action="koble.php" method="post">
       <div class="input-box">
-        <input type="text" placeholder="Skriv inn navn" required>
+        <input type="text" placeholder="Skriv inn fornavn" name="forNavn" required>
+      </div>
+	  <div class="input-box">
+        <input type="text" placeholder="Skriv inn etternavn" name="EtterNavn" required>
+      </div>
+	  <div class="input-box">
+        <input type="text" placeholder="Skriv inn e-post"  name="Email" required>
       </div>
       <div class="input-box">
-        <input type="text" placeholder="Skriv inn e-post" required>
+        <input type="password" placeholder="Lag passord" name="Passord" required>
       </div>
       <div class="input-box">
-        <input type="password" placeholder="Lag password" required>
-      </div>
-      <div class="input-box">
-        <input type="password" placeholder="Bekreft passord" required>
+        <input type="password" placeholder="Bekreft passord" name="Passord" required>
       </div>
 	  
 	  <div class="table">
