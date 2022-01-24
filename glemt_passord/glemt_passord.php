@@ -1,3 +1,8 @@
+/*
+    Work is unfinished
+    Code is taken from phpflow.com
+*/
+
 <?php
 require_once ('connect.php');
 require ('config.php');
@@ -23,3 +28,10 @@ if (isset($_POST) & !empty($_POST)) {
         echo "Email adressen eksisterer ikke i databasen.";
     }
 }
+
+
+<?php if(isset($smsg)){ ?> 
+<?php echo $smsg; ?> 
+<?php } ?> <?php if(isset($fmsg)){ ?> 
+<?php echo $fmsg; ?> 
+<?php } ?> 
