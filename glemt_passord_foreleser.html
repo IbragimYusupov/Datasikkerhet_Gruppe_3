@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="nb">
+  <!-- Information about the page -->
+  <head>
+    <title lang="en">Glemt passord</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Side for tilbakestilling av passordet til en foreleser på meldingstjenesten">
+    <meta name="keywords" content="glemt passord, foreleser">
+    <link rel="stylesheet" media="screen" href="" />
+  </head>
+  <!-- The visible content of the page -->
+  <body>
+    <!-- header content -->
+    <header>
+      <h1>Glemt passord - Foreleser</h1>
+    </header>
+    <!-- navigation -->
+    <nav>
+      <ul>
+        <li>
+          <a href="index.html">Hjem</a>
+        </li>
+      </ul>
+    </nav>
+    <!-- main body -->
+    <main>
+      <section>
+		<h2>Skriv e-mail adressen her:</h2>
+			<form action="glemt_passord.php" id="register-form" role="form" autocomplete="off" method="post" ?>
+				<input id="email" name="email" placeholder="Email address" type="email">
+				<input name="recover-submit" value="Reset Password" type="submit">
+				<input type="hidden"  name="token" id="token" value="">
+			</form>
+      </section>
+    </main>		
+    <!-- footer content-->
+    <footer>
+      <section>
+		<h2>Footer</h2>
+        <!--Gruppe informasjon?-->
+      </section>
+    </footer>
+  </body>
+</html>
