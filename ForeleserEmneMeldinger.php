@@ -18,7 +18,7 @@
 		echo "SQL statment failed";
 	}	else {
 		//Bind parameters to the placeholder
-		mysqli_stmt_bind_param($stmt, "s", $_SESSION['emne']);
+		mysqli_stmt_bind_param($stmt, "i", $_SESSION['emne']);
 		//Run parameters inside database
 		mysqli_stmt_execute($stmt);
 		$st_result = mysqli_stmt_get_result($stmt);
@@ -35,6 +35,7 @@
 						</a>
 					</form>
 				</div>';
+				
 			$nrOfTm++;
 		}
 	}
