@@ -26,12 +26,11 @@
     <!-- main body -->
     <main>
       <section>
-		<h2>Skriv e-mail adressen her:</h2>
-			<form action="glemt_passord.php" id="register-form" role="form" autocomplete="off" method="post" ?>
-				<input id="email" name="email" placeholder="Email address" type="email">
-				<input name="recover-submit" value="Reset Password" type="submit">
-				<input type="hidden"  name="token" id="token" value="">
-			</form>
+        <form method="post" action="send_link.php">
+          <p>Enter Email Address To Send Password Link</p>
+          <input type="text" name="email">
+          <input type="submit" name="submit_email">
+        </form>
       </section>
     </main>		
     <!-- footer content-->
