@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8">
@@ -10,19 +10,19 @@
     <h2>Registrering Student</h2>
     <form action="koble.php" method="post">
       <div class="input-box">
-        <input type="text" placeholder="Skriv inn fornavn" name="forNavn" required>
+        <input type="text" placeholder="Skriv inn fornavn" name="navn" required>
       </div>
 	  <div class="input-box">
-        <input type="text" placeholder="Skriv inn etternavn" name="EtterNavn" required>
+        <input type="text" placeholder="Skriv inn etternavn" name="etternavn" required>
       </div>
 	  <div class="input-box">
-        <input type="text" placeholder="Skriv inn e-post"  name="Email" required>
+        <input type="text" placeholder="Skriv inn e-post"  name="e_post" required>
       </div>
       <div class="input-box">
-        <input type="password" placeholder="Lag passord" name="Passord" required>
+        <input type="password" placeholder="Lag passord" name="passord" required>
       </div>
       <div class="input-box">
-        <input type="password" placeholder="Bekreft passord" name="Passord" required>
+        <input type="password" placeholder="Bekreft passord" name="passord" required>
       </div>
 	  
 	  <div class="table">
@@ -31,9 +31,9 @@
 				<td>
 				Studieretning :
 					<select>
-						<option>Retning 1</option>
-						<option>Retning 2</option>
-						<option>Retning 3</option>
+						<option name="studieretning">Retning 1</option>
+						<option name="studieretning">Retning 2</option>
+						<option name="studieretning">Retning 3</option>
 					</select>
 				</td>
 	  </tr>
@@ -46,9 +46,9 @@
 				<td>
 				Studiekull :
 					<select>
-						<option>kull 1</option>
-						<option>kull 2</option>
-						<option>kull 3</option>
+						<option name="studiekull">kull 1</option>
+						<option name="studiekull">kull 2</option>
+						<option name="studiekull">kull 3</option>
 					</select>
 				</td>
 	  </tr>
