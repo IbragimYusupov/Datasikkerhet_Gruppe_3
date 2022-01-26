@@ -1,17 +1,16 @@
 <?php
 	include_once 'header.php';
+	$_SESSION['user_id'] = 1;
 ?>
 <?php
-	$foreleser_informasjon = "SELECT navn, etternavn, e_post FROM foreleser;";
-	$foreleser_informasjon_result = mysqli_query($conn, $foreleser_informasjon);
-	$foreleser_informasjon_resultCheck = mysqli_num_rows($foreleser_informasjon_result);
+	$foi_sql = "SELECT navn, etternavn, e_post FROM foreleser WHERE id = ?;";
+	$foi_stmt = mysqli_stmt_init($conn);
 	
-	$foreleser_fag = "SELECT em.navn, em.id FROM emne em
+	$fog_sql = "SELECT em.navn, em.id FROM emne em
 					  INNER JOIN foreleser_has_emne fhe ON em.id = fhe.emne_id
 					  INNER JOIN foreleser fo ON fhe.foreleser_id = fo.id
-					  WHERE fo.id = 1;";
-	$foreleser_fag_result = mysqli_query($conn, $foreleser_fag);
-	$foreleser_fag_resultCheck = mysqli_num_rows($foreleser_fag_result);
+					  WHERE fo.id = ?;";
+	$fog_stmt = mysqli_stmt_init($conn);
 	
 	$arrayOfEmneId = array();
 	$nr_of_emne = 0;
@@ -22,8 +21,13 @@
         <div>
             <ul>
 			<?php 
-			if ($foreleser_fag_resultCheck > 0) {
-				while($fag_row = mysqli_fetch_assoc($foreleser_fag_result)) {
+			if (!mysqli_stmt_prepare($fog_stmt, $fog_sql)) {
+				echo "SQL statment failed";
+			} else {
+				mysqli_stmt_bind_param($fog_stmt, "i", $_SESSION['user_id']);
+				mysqli_stmt_execute($fog_stmt);
+				$fog_result = mysqli_stmt_get_result($fog_stmt);
+				while($fag_row = mysqli_fetch_assoc($fog_result)) {
 					array_push($arrayOfEmneId, $fag_row["id"]);
 					echo 
 					'<li>
@@ -58,13 +62,20 @@
                 <th>Epost</th>
             </tr>
 			<?php 
-			if ($foreleser_informasjon_resultCheck > 0) {
-				while($foreleser_row = mysqli_fetch_assoc($foreleser_informasjon_result)) {?>
-            <tr>
-                <th><?php echo $foreleser_row['navn'], ' ', $foreleser_row['etternavn'];?></th>
-                <th><?php echo $foreleser_row['e_post'];?></th>
-            </tr>
-			<?php } }?>
+			if (!mysqli_stmt_prepare($foi_stmt, $foi_sql)) {
+				echo "SQL statment failed";
+			} else {
+				mysqli_stmt_bind_param($foi_stmt, "i", $_SESSION['user_id']);
+				mysqli_stmt_execute($foi_stmt);
+				$foi_result = mysqli_stmt_get_result($foi_stmt);
+				while($foreleser_row = mysqli_fetch_assoc($foi_result)) {
+					echo '
+					<tr>
+					<th>',$foreleser_row["navn"],' ',$foreleser_row["etternavn"],'</th>
+					<th>',$foreleser_row["e_post"],'</th>
+					</tr>';
+            
+			 } }?>
         </table>
         <img src="temp" alt="Bilde av Foreleser">
     </div>
