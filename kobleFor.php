@@ -8,7 +8,7 @@ $emne = $_POST['emne'];
 
 // koble til databasen: 
 
-$conn = new mysqli('localhost', 'root','','datasikkerhet');
+$conn = new mysqli('localhost', 'root','','database_datasikkerhet');
 if(conn ->connect_error){
 	echo "$conn->connect_error";
 	die("Tilkobling Feilet :". $conn -> connect_error);
