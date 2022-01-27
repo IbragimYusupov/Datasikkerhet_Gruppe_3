@@ -21,8 +21,11 @@ function validate_input($data) {
 	return $data;
 }	
 
+$emne = filter_input(INPUT_POST, 'emne', FILTER_SANITIZE_STRING);
 
-	$message_box = ""; //set an empty variable
+$emneId = "select id from emne where navn = $emne";
+
+$message_box = ""; //set an empty variable
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$message_box = validate_input($_POST["message-box"]);
@@ -31,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 
-$sql = "INSERT INTO `tilbakemelding_student` (`id`, `tidspunkt`, `tilbakemelding`, `svar_gitt_foreleser`, `emne_id`, `student_id`) VALUES (NULL, '', '$message_box', '', '1', '1')";
+$sql = "INSERT INTO `tilbakemelding_student` (`id`, `tidspunkt`, `tilbakemelding`, `svar_gitt_foreleser`, `emne_id`, `student_id`) VALUES (NULL, '', '$message_box', '0', '$emneId', '1')";
 
 if($con -> query($sql) === TRUE) {
 	echo "Tilbakemelding gitt";
@@ -41,5 +44,3 @@ if($con -> query($sql) === TRUE) {
 $con->close();
 
 ?>
-
-
