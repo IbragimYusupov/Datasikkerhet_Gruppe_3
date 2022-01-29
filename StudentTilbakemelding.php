@@ -1,24 +1,5 @@
 <!DOCTYPE html>	
 
-<?php
-$host="127.0.0.1";
-$port=3306;
-$socket="";
-$user="root";
-$password="";
-$dbname="mydb";
-
-$con = new mysqli($host, $user, $password, $dbname, $port, $socket)
-	or die ('Could not connect to the database server' . mysqli_connect_error());
-$emneNavn = 'SELECT navn FROM emne';
-$result = mysqli_query($con,$emneNavn);
-$emner = mysqli_fetch_all($result, MYSQLI_ASSOC);
-$i = 0;
-
-$emneId = "select id from emne where navn = $emne";
-
-$emneRes = mysqli_query($con, $emneRes);
-?>
 	<html lang="nb">
 	
 		<!-- Information about the page -->
@@ -29,7 +10,7 @@ $emneRes = mysqli_query($con, $emneRes);
 			<meta name="description" content="Meldingstjeneste for tilbakemeldinger på emner">
 			<meta name="keywords" content="Tilbake melding, emne">
 			
-			<link rel="stylesheet" media="screen" href="" />
+			<link rel="stylesheet" media="screen" href="stil.css" />
 		</head>
 		
 		<!-- The visible content of the page -->
@@ -53,25 +34,34 @@ $emneRes = mysqli_query($con, $emneRes);
 					<h2>Emne navn</h2>
 					<!--php script: student_feedback.php-->
 					<form action="student_feedback.php" method="POST">
-						<label for="emne">Velg et emne:</label>
-							<select id="emne">
-							<?php foreach($emner as $emne):?>
-							<option value="<?php echo $i++; ?>"><?php echo $emne['navn'];?></option>
-							<?php endforeach;?>
+					<time>Dato: <?php echo date('Y.m.d G:i'); ?></time>
+						<label for="emne" >Velg et emne:</label>
+							<select id="emne" name="fag">
+							<?php include_once 'emner.php'; foreach($emner as $emne):
+								echo "<option value=\"" .$emne['navn']."\">". $emne['navn'] ."</option>";
+							endforeach;?>
 							</select>
-							<p <?php echo $emneRes ?>></p>
-						<label for="message-box" name="emne-tilbakemelding">Send melding</label><br>
-						<textarea id="message-box" name="message-box" rows="5" cols="50" 
+						<label for="message-box" name="emne-tilbakemelding"></label><br>
+						<textarea id="message-box" name="message-box" rows="20" cols="100" 
 						placeholder="Skriv din tilbakemelding her" maxlength="500"></textarea>
-						<input type = "submit" value = "submit" />
+						<input type = "submit" value = "Send din melding" />
 					</form>
 				</section>
 			</main>
 			
 			<!-- footer content-->
-			<footer>
+			<footer>				
+			<h2>Kontakt informasjon</h2>
 				<section>
 				<!--Gruppe informasjon?-->
+				<p>Anton Kjus - anton.kjus@hiof.no</p>
+				<p>Christoffer Nicolai Olaussen - christoffer.n.olaussen@hiof.no</p>
+				<p>Hanna Elisabeth Berg Johansen - hejohan@hiof.no</p>
+				<p>Ibragim Yusupov - ibragim.yusupov@hiof.no</p>
+				<p>Jens Berdal Vaage - eksempel@epost.no</p>
+				<p>Thomas Waaler Hansen - eksempel@epost.no</p>
+				<p>Viktoria Jacobsen - viktorij@hiof.no</p>
+				<p>Vincent Ndaye Kabalo Mukendi - Vnmukend@hiof.no</p>
 				</section>
 			</footer>
 		</body>
