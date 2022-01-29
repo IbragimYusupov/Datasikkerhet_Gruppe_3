@@ -1,0 +1,52 @@
+<html>
+<head>
+  <meta charset="utf-8">
+    <title>PHP login system</title>
+    <link rel = "stylesheet" type = "text/css" href = "style.css">
+</head>
+<body>
+    <div id = "frm">
+        <h1>Logg inn Student</h1>
+        <form name="f1" action = "authentication.php" onsubmit = "return validation()" method = "POST">
+            <p>
+                <label> E-post: </label>
+                <input type = "text" id ="user" name  = "user" />
+            </p>
+            <p>
+                <label> Passord: </label>
+                <input type = "password" id ="pass" name  = "pass" />
+            </p>
+            <p>
+                <input type =  "submit" id = "btn" value = "Login" />
+            </p>
+            <p><a href="login.html">Glemt passord</a></p>
+        </form>
+        <button type="button" onclick="test.html">Logg inn som gjest</button>
+        <button type="button" onclick="index.html">Logg inn som Foreleser</button>
+<p><button type="button" onclick="index.html">Registrer Foreleser</button>
+<button type="button" onclick="index.html">Registrer Student</button></p>
+    </div>
+    <script>
+            function validation()
+            {
+                var id=document.f1.user.value;
+                var ps=document.f1.pass.value;
+                if(id.length=="" && ps.length=="") {
+                    alert("User Name and Password fields are empty");
+                    return false;
+                }
+                else
+                {
+                    if(id.length=="") {
+                        alert("User Name is empty");
+                        return false;
+                    }
+                    if (ps.length=="") {
+                    alert("Password field is empty");
+                    return false;
+                    }
+                }
+            }
+        </script>
+</body>
+</html>
