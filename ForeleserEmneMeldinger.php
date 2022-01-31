@@ -44,7 +44,7 @@
 				function setTm($arrayOfTmId) {
 					$tmNr = $_POST['melding'];
 					$_SESSION['tm'] = $arrayOfTmId[$tmNr];
-					header("LOCATION: http://localhost/phpfiles/ForeleserKomentar.php");
+					header("LOCATION: ForeleserKomentar.php");
 				}
 				if(array_key_exists('melding', $_POST)) {
 					setTm($arrayOfTmId);
