@@ -1,7 +1,7 @@
 <?php 
 include_once 'includes/dbh.inc.php';
 
- $sql = "SELECT navn FROM emne;";
+ $sql = "SELECT navn, id FROM emne;";
 	$stmt =  mysqli_stmt_init($conn);
 	$fog_stmt = mysqli_stmt_init($conn);
 
@@ -18,21 +18,21 @@ include_once 'includes/dbh.inc.php';
 <body align="center">
   <div class="wrapper">
     <h2>Registrering Foreleser</h2>
-    <form action="includes/lagFor.php" method="post">
+    <form action="includes/lagFor.php" method="post" enctype="multipart/form-data">
       <div class="input-box">
-        <input type="text" placeholder="Skriv inn fornavn" name="navn" required>
+        <input type="text" placeholder="Skriv inn fornavn" name="navn" >
       </div>
 	  <div class="input-box">
-        <input type="text" placeholder="Skriv inn etternavn" name="etternavn" required>
+        <input type="text" placeholder="Skriv inn etternavn" name="etternavn" >
       </div>
       <div class="input-box">
-        <input type="email" placeholder="Skriv inn e-post" name="e_post" required>
+        <input type="text" placeholder="Skriv inn e-post" name="e_post" >
       </div>
       <div class="input-box">
-        <input type="password" placeholder="Lag passord" name="passord" required>
+        <input type="password" placeholder="Lag passord" name="passord" >
       </div>
 	   <div class="input-box">
-        <input type="password" placeholder="Bekreft passord" name="Bpassord" required>
+        <input type="password" placeholder="Bekreft passord" name="Bpassord" >
       </div>
 	  Emne:
 	  <select name="emne_liste" >
@@ -45,7 +45,7 @@ include_once 'includes/dbh.inc.php';
 				while($row = mysqli_fetch_assoc($result)) {
 					echo 
 					'
-					<option value="',$row["navn"],'">
+					<option value="',$row["id"],'">
 					',$row["navn"] ,'
 					</option>
 					';
@@ -58,7 +58,7 @@ include_once 'includes/dbh.inc.php';
 	  
 	  <div required>
 	  <label for="myfile">Legg til bilde:</label>
-	  <input class="file-upload-input" type="file" onchange="readURL(this)" accept="Image/*" name="bilde_navn">
+	  <input type="file" name="file">
 	  </div>
 	  
       <div class="input-box button">

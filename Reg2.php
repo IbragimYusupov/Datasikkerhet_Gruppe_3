@@ -24,7 +24,7 @@ include_once 'includes/dbh.inc.php';
         <input type="text" placeholder="Skriv inn etternavn" name="etternavn">
 		</div>
 		<div class="input-box">
-        <input type="email" placeholder="Skriv inn e-post"  name="e_post">
+        <input type="text" placeholder="Skriv inn e-post"  name="e_post">
 		</div>
 		<div class="input-box">
         <input type="password" placeholder="Lag passord" name="passord">
@@ -34,7 +34,7 @@ include_once 'includes/dbh.inc.php';
 		</div>
 
 		<div class="input-box">
-		<input type="text" placeholder="skriv inn studiekull" name="studiekull">
+		<input type="number" placeholder="skriv inn studiekull" name="studiekull">
 		</div >
 			Studieretning:
 		
