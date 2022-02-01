@@ -33,7 +33,7 @@
 		echo 
 		'
 			<p>Du er ikke logget inn</p>
-			<a href="login.php">Logg Inn</a>
+			<a href="index.php">Logg Inn</a>
 		';
 	}
 	?>
