@@ -9,6 +9,15 @@ function validate_input($data) {
 	return $data;
 }	
 
+// We need to use sessions, so you should always start sessions using the below code.
+session_start();
+// If the user is not logged in redirect to the login page...
+if (!isset($_SESSION['loggedin'])) {
+	header('Location: index.html');
+	exit;
+}
+$id = $_SESSION['id'];
+
 $datetime = date('Y-m-d H:i:s');
 $emne = ''; //set an empty variable
 $message_box = ""; //set an empty variable
@@ -30,7 +39,7 @@ if(!mysqli_stmt_prepare($emne_stmt,$emne_sql_query)) {
 }
 
 // Student_id needs to be changed 
-$tilbakemelding = "INSERT INTO `tilbakemelding_student` (`id`, `tidspunkt`, `tilbakemelding`, `svar_gitt_foreleser`,`emne_id`, `student_id`) VALUES (NULL, '$datetime', '$message_box', '0','$string_emne', '1')";
+$tilbakemelding = "INSERT INTO `tilbakemelding_student` (`id`, `tidspunkt`, `tilbakemelding`, `svar_gitt_foreleser`,`emne_id`, `student_id`) VALUES (NULL, '$datetime', '$message_box', '0','$string_emne', '$id')";
 $tilbakemelding_init = mysqli_stmt_init($con);
 
 
@@ -44,5 +53,5 @@ if(!mysqli_stmt_prepare($tilbakemelding_init, $tilbakemelding)) {
 $con->close();	//close the connection to the database
 
 // Change to student homepage
-header("Location:StudentTilbakemelding.php");
+header("Location:StudentHjemmeSide.php");
 ?>
