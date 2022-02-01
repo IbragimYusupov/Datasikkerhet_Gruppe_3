@@ -1,12 +1,7 @@
 <?php
 session_start();
 // Change this to your connection info.
-$DATABASE_HOST = 'localhost';
-$DATABASE_USER = 'root';
-$DATABASE_PASS = '';
-$DATABASE_NAME = 'mydb';
-// Try and connect using the info above.
-$con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
+include_once 'dbh.inc.php';
 if ( mysqli_connect_errno() ) {
 	// If there is an error with the connection, stop the script and display the error.
 	exit('Failed to connect to MySQL: ' . mysqli_connect_error());
@@ -19,7 +14,7 @@ if ( !isset($_POST['username'], $_POST['password']) ) {
 }
 
 // Prepare our SQL, preparing the SQL statement will prevent SQL injection.
-if ($stmt = $con->prepare('SELECT id, passord FROM foreleser WHERE e_post = ?')) {
+if ($stmt = $conn->prepare('SELECT id, passord FROM foreleser WHERE e_post = ?')) {
 	// Bind parameters (s = string, i = int, b = blob, etc), in our case the username is a string so we use "s"
 	$stmt->bind_param('s', $_POST['username']);
 	$stmt->execute();
@@ -32,14 +27,14 @@ if ($stmt = $con->prepare('SELECT id, passord FROM foreleser WHERE e_post = ?'))
   	// Account exists, now we verify the password.
   	// Note: remember to use password_hash in your registration file to store the hashed passwords.
     // HER MÅ DET ENDRES: med linja under, skal funke med hashed passord
-    //if (password_verify($_POST['password'], $passord)) {
-  	if ($_POST['password'] === $passord) {
+    if (password_verify($_POST['password'], $passord)) {
   		// Verification success! User has logged-in!
   		// Create sessions, so we know the user is logged in, they basically act like cookies but remember the data on the server.
   		session_regenerate_id();
   		$_SESSION['loggedin'] = TRUE;
   		$_SESSION['name'] = $_POST['username'];
-  		$_SESSION['id'] = $id;
+  		$_SESSION['user_id'] = $id;
+	    	$_SESSION['type'] = "f";
   		header('Location: home.php');
   	} else {
   		// Incorrect password
