@@ -65,7 +65,7 @@ include_once 'includes/dbh.inc.php';
         <input type="submit" value="Registrer" name="submit">
       </div>
       <div class="text">
-        <h3>Har du en bruker fra før? <a href="#">Logg inn her</a></h3>
+        <h3>Har du en bruker fra før? <a href="login_foreleser.html">Logg inn her</a></h3>
 		<h3>registrere som student? <a href="Reg2.php"> Studentregistrering</a></h3>
 	  </div>
     </form>
