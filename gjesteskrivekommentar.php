@@ -22,6 +22,7 @@ $gj_stmt = mysqli_stmt_init($conn);
 
         <header>
         <h2> Gjesteinnlogging </h2>
+		<a href="gjestebrukerkommentar.php">Tilbake</a>
         
         </header>
         
@@ -81,7 +82,7 @@ $gj_stmt = mysqli_stmt_init($conn);
                     }
                 }
 
-			} 
+		}} 
 			?>
 
         </body>

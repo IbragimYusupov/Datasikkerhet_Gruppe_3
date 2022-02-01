@@ -43,6 +43,7 @@ if (!isset($_SESSION['loggedin'])) {
 				<section>
 					<h2>Emne navn</h2>
 					<!--php script: student_feedback.php-->
+
 					<form action="student_feedback.php" method="POST">
 					<time>Dato: <?php echo date('Y.m.d G:i'); ?></time>
 						<label for="emne" >Velg et emne:</label>

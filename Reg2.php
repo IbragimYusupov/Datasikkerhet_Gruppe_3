@@ -1,7 +1,7 @@
  <?php 
 include_once 'includes/dbh.inc.php';
 
- $sql = "SELECT id FROM studieretning;";
+ $sql = "SELECT id, studieretning FROM studieretning;";
 	$stmt =  mysqli_stmt_init($conn);
 	$fog_stmt = mysqli_stmt_init($conn);
 	
@@ -49,7 +49,7 @@ include_once 'includes/dbh.inc.php';
 					echo 
 					'
 					<option value="',$row["id"],'">
-					',$row["id"] ,'
+					',$row["studieretning"] ,'
 					</option>
 					';
 					

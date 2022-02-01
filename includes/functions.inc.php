@@ -122,7 +122,7 @@
 		mysqli_stmt_execute($stmt);
 		mysqli_stmt_close($stmt);
 		
-		header("location: ../Reg2.php?error=none");
+		header("location: ../login_student.html?error=none");
 		exit();
 		
 		}
@@ -186,7 +186,7 @@
 						mysqli_stmt_bind_param($stmt, "ssi", $fileName, $fileNameNew, $foreleserid);
 						mysqli_stmt_execute($stmt);
 						mysqli_stmt_close($stmt);
-						header("location: ../Reg2For.php?error=none");
+						header("location: ../login_foreleser.html?error=none");
 						exit();
 					} else {
 						header("location: ../Reg2For.php?error=fileTooBig");

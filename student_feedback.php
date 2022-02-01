@@ -1,5 +1,5 @@
 <?php
-include_once 'connect.php';
+include_once 'includes/dbh.inc.php';
 
 /*function for validating data, code from w3schools*/
 function validate_input($data) {
@@ -16,7 +16,7 @@ if (!isset($_SESSION['loggedin'])) {
 	header('Location: index.html');
 	exit;
 }
-$id = $_SESSION['id'];
+$id = $_SESSION['user_id'];
 
 $datetime = date('Y-m-d H:i:s');
 $emne = ''; //set an empty variable
@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 $emne_sql_query = "select id from emne where navn = '$emne'";	//sql_query template
-$emne_stmt = mysqli_stmt_init($con);	//connecting to database
+$emne_stmt = mysqli_stmt_init($conn);	//connecting to database
 
 if(!mysqli_stmt_prepare($emne_stmt,$emne_sql_query)) {
 	echo "SQL statment failed";	// if the prepared statment fails
@@ -40,17 +40,17 @@ if(!mysqli_stmt_prepare($emne_stmt,$emne_sql_query)) {
 
 // Student_id needs to be changed 
 $tilbakemelding = "INSERT INTO `tilbakemelding_student` (`id`, `tidspunkt`, `tilbakemelding`, `svar_gitt_foreleser`,`emne_id`, `student_id`) VALUES (NULL, '$datetime', '$message_box', '0','$string_emne', '$id')";
-$tilbakemelding_init = mysqli_stmt_init($con);
+$tilbakemelding_init = mysqli_stmt_init($conn);
 
 
 if(!mysqli_stmt_prepare($tilbakemelding_init, $tilbakemelding)) {
 	echo $string_emne;
-	echo "Error:" . $sql . "<br>" . $con->error;
+	echo "Error:" . $sql . "<br>" . $conn->error;
 }else{
 	mysqli_stmt_execute($tilbakemelding_init);
 }
 
-$con->close();	//close the connection to the database
+$conn->close();	//close the connection to the database
 
 // Change to student homepage
 header("Location:StudentHjemmeSide.php");
