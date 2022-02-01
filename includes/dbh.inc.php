@@ -1,10 +1,11 @@
 <?php
 
-//Koble til databasen
+$dbServername = "localhost";
+$dbUsername = "root";
+$dbPassword = "";
+$dbName = "datasikkerhet";
 
-$conn = new mysqli('localhost', 'root','','mydb');
-if(!$conn){
+$conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
+ if(!$conn){
 	die("Tilkobling Feilet :". mysqli_connect_error());
-}else{
-
 }
