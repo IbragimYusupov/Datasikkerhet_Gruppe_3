@@ -29,7 +29,7 @@
 					<form action="includes/kommentar.inc.php" method="POST">
 					<label>Kommentar</label>
                     <input type="text" name="svar" placeholder="Kommentar">
-					<a href="ForeleserEmneMeldinger.php"><button type="submit" name="submit">Send</button></a>
+					<button type="submit" name="submit">Send</button>
 					</form>
 						';
 					} else {
