@@ -32,7 +32,7 @@ if ($stmt = $con->prepare('SELECT id, passord FROM foreleser WHERE e_post = ?'))
   	// Account exists, now we verify the password.
   	// Note: remember to use password_hash in your registration file to store the hashed passwords.
     // HER MÅ DET ENDRES: med linja under, skal funke med hashed passord
-    //if (password_verify($_POST['password'], $password)) {
+    //if (password_verify($_POST['password'], $passord)) {
   	if ($_POST['password'] === $passord) {
   		// Verification success! User has logged-in!
   		// Create sessions, so we know the user is logged in, they basically act like cookies but remember the data on the server.

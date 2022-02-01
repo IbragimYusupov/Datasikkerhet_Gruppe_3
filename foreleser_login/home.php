@@ -20,7 +20,7 @@ if (!isset($_SESSION['loggedin'])) {
 			<div>
 				<h1>Hjemmeside Foreleser</h1>
 				<a href="profile.php"><i class="fas fa-user-circle"></i>profil</a>
-				<a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logg ut</a>
+				<a href="logout_foreleser.php"><i class="fas fa-sign-out-alt"></i>Logg ut</a>
 			</div>
 		</nav>
 		<div class="content">

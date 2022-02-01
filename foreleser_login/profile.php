@@ -3,7 +3,7 @@
 session_start();
 // If the user is not logged in redirect to the login page...
 if (!isset($_SESSION['loggedin'])) {
-	header('Location: index.html');
+	header('Location: login_foreleser.html');
 	exit;
 }
 $DATABASE_HOST = 'localhost';
@@ -36,7 +36,7 @@ $stmt->close();
 			<div>
 				<h1>Website Title</h1>
 				<a href="profile.php"><i class="fas fa-user-circle"></i>Profile</a>
-				<a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
+				<a href="logout_foreleser.php"><i class="fas fa-sign-out-alt"></i>Logg ut</a>
 			</div>
 		</nav>
 		<div class="content">
@@ -53,7 +53,7 @@ $stmt->close();
 						<td><?=$passord?></td>
 					</tr>
 					<tr>
-						<td>Email:</td>
+						<td>E-post:</td>
 						<td><?=$e_post?></td>
 					</tr>
 				</table>
