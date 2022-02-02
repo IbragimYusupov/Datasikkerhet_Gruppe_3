@@ -1,11 +1,11 @@
 <?php
-require 'phpmailer/includes/PHPMailer.php';
-require 'phpmailer/includes/SMTP.php';
-require 'phpmailer/includes/Exception.php';
+// require 'phpmailer/includes/PHPMailer.php';
+// require 'phpmailer/includes/SMTP.php';
+// require 'phpmailer/includes/Exception.php';
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-use PHPMailer\PHPMailer\SMTP;
+// use PHPMailer\PHPMailer\PHPMailer;
+// use PHPMailer\PHPMailer\Exception;
+// use PHPMailer\PHPMailer\SMTP;
 
 $email = $_POST['email'];
 $unhashed_email = $_POST['email'];
@@ -27,30 +27,30 @@ if(isset($_POST['submit_email']) && $_POST['email']) {
     }
 
     // Instantiate PHPMailer
-    $mail = new PHPMailer(true);
+    // $mail = new PHPMailer(true);
 
     // Server Settings
-    $mail->SMTPDebug = SMTP::DEBUG_SERVER;  // <-For debugging
-    $mail->CharSet = "utf-8";
-    $mail->IsSMTP();
-    $mail->Host = "smtp.gmail.com";
-    $mail->SMTPAuth = true;  
-    $mail->Username = "reset.pwd.datasikkerhet.gruppe3@gmail.com";
-    $mail->Password = "tomheineershady";
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;   
-    $mail->Port = 587;
+    // $mail->SMTPDebug = SMTP::DEBUG_SERVER;  // <-For debugging
+    // $mail->CharSet = "utf-8";
+    // $mail->IsSMTP();
+    // $mail->Host = "smtp.gmail.com";
+    // $mail->SMTPAuth = true;  
+    // $mail->Username = "reset.pwd.datasikkerhet.gruppe3@gmail.com";
+    // $mail->Password = "";
+    // $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;   
+    // $mail->Port = 587;
 
     //Recipient
-    $mail->setFrom('reset.pwd.datasikkerhet.gruppe3@gmail.com','Tilbakemeldingstjeneste');
-    $mail->addAddress($unhashed_email);
+    // $mail->setFrom('reset.pwd.datasikkerhet.gruppe3@gmail.com','Tilbakemeldingstjeneste');
+    // $mail->addAddress($unhashed_email);
 
     // Content
-    $mail->IsHTML(true);
-    $mail->Subject = 'Reset Password';
+    // $mail->IsHTML(true);
+    // $mail->Subject = 'Reset Password';
     // Password reset link
-    $link = "<a href='http://158.39.188.203/steg1/reset_pass.php?key=".$email."&reset=".$pass."'>Klikk her for å oppdatere passordet ditt hos Tilbakemeldingstjenesten på Høgskolen i Østfold.</a>";
-    $mail->Body = $link;
-    if($mail->Send())
+    // $link = "<a href='http://158.39.188.203/steg1/reset_pass.php?key=".$email."&reset=".$pass."'>Klikk her for å oppdatere passordet ditt hos Tilbakemeldingstjenesten på Høgskolen i Østfold.</a>";
+    // $mail->Body = $link;
+    // if($mail->Send())
     {
       echo "Check Your Email and click on the link sent to your email.";
     }
