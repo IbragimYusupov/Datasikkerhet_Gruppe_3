@@ -39,7 +39,7 @@ if(isset($_POST['submit_email']) && $_POST['email']) {
     // $mail->Host = "smtp.gmail.com";
     // $mail->SMTPAuth = true;  
     // $mail->Username = "reset.pwd.datasikkerhet.gruppe3@gmail.com";
-    // $mail->Password = "tomheineershady";
+    // $mail->Password = "";
     // $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;   
     // $mail->Port = 587;
 
