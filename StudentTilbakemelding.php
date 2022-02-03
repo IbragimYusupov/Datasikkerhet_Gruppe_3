@@ -58,6 +58,22 @@ if (!isset($_SESSION['loggedin'])) {
 						<input type = "submit" value = "Send din melding" />
 					</form>
 				</section>
+				<section>
+					<h2>Bilde av foreleserne i dine emner</h2>
+					<?php include_once 'emner.php'; foreach($bilder as $bilde):
+						foreach($emner as $emne):
+							if($bilde['navn'] === $emne['navn']){
+								echo "<img src=\"http://158.39.188.203/steg1/uploads/".$bilde['file_destination']. "\" alt=\"".$bilde['bilde_navn']. "\">";
+								echo "<p>";
+								echo 'Foreleser i ';
+								echo ''.$emne['navn'].'';
+								echo ' - ';
+								echo ''.$bilde['fornavn'], $bilde['etternavn'].'';
+								echo "</p>";
+							}
+						endforeach;
+					endforeach;?>
+				</section>
 			</main>
 			
 			<!-- footer content-->

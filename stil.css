@@ -64,6 +64,14 @@ h1 {
 	padding-left: 30px;
 }
 
+section {
+	
+}
+
+section img {
+	display: block;
+}
+
 footer {
 
 	grid-area: footer;
