@@ -3,7 +3,7 @@
 if (isset($_POST["reset-request-submit"])) {
 	
 	require_once 'dbh.inc.php';
-	include_once 'dunctions.inc.php';
+	include_once 'functions.inc.php';
 	
 	$userEmail = $_POST["email"];
 	
@@ -12,7 +12,7 @@ if (isset($_POST["reset-request-submit"])) {
 		exit();
 	}
 	
-	if (studentExists($conn, $userEmail) !== false) {
+	if (!eposttatt($conn, $userEmail) !== false) {
 		header("location: ../StudentGlemtPassord.php?error=emailNotExits");
 		exit();
 	} 

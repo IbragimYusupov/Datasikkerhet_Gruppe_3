@@ -14,21 +14,16 @@
 		$studentTableSet = "UPDATE tilbakemelding_student SET svar_gitt_foreleser = '1' WHERE tilbakemelding_student.id = ?;";
 		$stmtIn = mysqli_stmt_init($conn);
 		$stmtSt = mysqli_stmt_init($conn);
-		if(!mysqli_stmt_prepare($stmtIn, $sql)) {
+		if(!mysqli_stmt_prepare($stmtIn, $sql) || !mysqli_stmt_prepare($stmtSt, $studentTableSet)) {
 			echo "SQL error";
 			exit();
 		} else {
 			mysqli_stmt_bind_param($stmtIn, "isii", $tidspunkt, $svar, $foreleser_id, $tilbakemelding_student_id);
 			mysqli_stmt_execute($stmtIn);
-		}
-		if (!mysqli_stmt_prepare($stmtSt, $studentTableSet)) {
-			echo "SQL error";
-			exit();
-		} else {
 			mysqli_stmt_bind_param($stmtSt, "i", $tilbakemelding_student_id);
 			mysqli_stmt_execute($stmtSt);
+			header("LOCATION: ../ForeleserEmneMeldinger.php?svar=sent");
 		}
-		header("LOCATION: ../ForeleserEmneMeldinger.php?svar=sent");
 		} else {
 			header("LOCATION: ../ForeleserEmneMeldinger.php?svar=empty");
 		}

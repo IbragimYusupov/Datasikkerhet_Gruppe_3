@@ -14,7 +14,7 @@
 	
 	function emptyInputSignupForeleser($navn, $etternavn, $e_post, $passord, $Bpassord, $file, $emneListe){
 	$result; 
-	if (empty($navn) || empty($etternavn) || empty($e_post) || empty($passord) || empty($Bpassord)) { 
+	if (empty($navn) || empty($etternavn) || empty($e_post) || empty($passord) || empty($Bpassord) || empty($file) || empty($emneListe)) { 
 		
 	$result = true; 
 }
@@ -24,6 +24,37 @@
 	return $result;
 	}
 	
+	function imgAllowed($file) {
+			$fileName = $file["name"];
+			$fileSize = $file["size"];
+			$fileError = $file["error"];
+			
+			$fileExt = explode('.', $fileName);
+			$fileActualExt = strtolower(end($fileExt));
+			
+			$allowed = array('jpg', 'jpeg', 'png');
+			
+			if (in_array($fileActualExt, $allowed)){
+				if ($fileError === 0) {
+					if ($fileSize < 1000000){
+						
+						$result = false;
+						return $result;
+					} else {
+						$result = true;
+						return $result;
+					}
+				}
+					else {
+						$result = true;
+						return $result;
+					}
+				} else {
+					$result = true;
+					return $result;
+				}
+			
+		}
 	
 	
 	function invalidepost($e_post) {
@@ -89,7 +120,7 @@
 		$sql = "SELECT * FROM foreleser WHERE e_post = ?;";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header("location: ../Reg2For.php?error=stmtfailed");
+        header("location: ../Reg2for.php?error=stmtfailed");
         exit();
     }
 
@@ -148,7 +179,7 @@
 			VALUES (?, ?);";
 			$stmt = mysqli_stmt_init($conn);
 			if (!mysqli_stmt_prepare($stmt, $sql)) {
-				header("location: ../Reg2For.php?error=stmtfailed");
+				header("location: ../Reg2for.php?error=stmtfailed");
 				exit();
 			}
 			
@@ -157,12 +188,13 @@
 		mysqli_stmt_close($stmt);
 		}
 		
+		
 		function registrerBilde ($conn, $file, $foreleserid){
 			$sql = "INSERT INTO bilde(bilde_navn, file_destination, foreleser_id)
 			VALUES (?, ?, ?);";
 			$stmt = mysqli_stmt_init($conn);
 			if(!mysqli_stmt_prepare($stmt, $sql)) {
-				header("location: ../Reg2For.php?error=stmtfailed");
+				header("location: ../Reg2for.php?error=stmtfailed");
 				exit();
 			}
 		
@@ -189,18 +221,19 @@
 						header("location: ../login_foreleser.html?error=none");
 						exit();
 					} else {
-						header("location: ../Reg2For.php?error=fileTooBig");
+						header("location: ../Reg2for.php?error=fileTooBig");
 						exit();
 					}
 				}
 					else {
 						echo 'Det oppstod en feil med opplastingen av ditt bilde!';
-						header("location: ../Reg2For.php?error=fileErrorUpload");
+						header("location: ../Reg2for.php?error=fileErrorUpload");
 						exit();
 					}
 				} else {
-					header("location: ../Reg2For.php?error=fileWrongType");
+					header("location: ../Reg2for.php?error=fileWrongType");
 					exit;
 				}
 				
 			}
+

@@ -41,7 +41,7 @@ $arrayOfTmId = array();
 		    while ($row = mysqli_fetch_assoc($result)) {
 			    echo 
 				    '<div>
-					   <img src="http://localhost/phpfiles/uploads/',$row["file_destination"],'" alt="',$row["bilde_navn"],'">
+					   <img src="http://158.39.188.203/steg1/uploads/',$row["file_destination"],'" alt="',$row["bilde_navn"],'">
 				    </div>';
 		}
 	}

@@ -35,8 +35,6 @@ if(isset($_POST['submit_email']) && $_POST['email']) {
     if($result ==  true)
     {
       echo 'Mailen er sendt. Sjekk innboksen din!:)';
-      sleep(5)
-      echo 'Du blir nå sendt til forsiden.'
     }
     else
     {

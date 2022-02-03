@@ -57,7 +57,7 @@
 					<th>',$foreleser_row["e_post"],'</th>
 					</tr>
 					</table>
-					<img src="http://localhost/phpfiles/uploads/',$foreleser_row["file_destination"],'" alt="',$foreleser_row["bilde_navn"],'">';
+					<img src="http://158.39.188.203/steg1/uploads/',$foreleser_row["file_destination"],'" alt="',$foreleser_row["bilde_navn"],'">';
             
 			 } }?>
     </div>

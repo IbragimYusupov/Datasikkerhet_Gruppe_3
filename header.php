@@ -26,7 +26,7 @@
 					echo '<a href="StudentHjemmeside.php">Din Side</a>';
 				}
 				if ($_SESSION['type'] === "f") {
-					echo '<a href="ForeleserHjemmeside.php">Din Side</a>';
+					echo '<a href="ForeleserHjemmeSide.php">Din Side</a>';
 				}
 				echo '
 					<form action="includes/logout.php" method="POST">

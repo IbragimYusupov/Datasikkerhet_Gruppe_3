@@ -66,7 +66,7 @@ include_once 'includes/dbh.inc.php';
 	</div>
 <div class="text">
         <h3>Har du en bruker fra før? <a href="login_student.html">Logg inn her</a></h3>
-		<h3>Registrere som foreleser? <a href="Reg2For.php"> Foreleserregistrering</a></h3>
+		<h3>Registrere som foreleser? <a href="Reg2for.php"> Foreleserregistrering</a></h3>
       </div>
   </div>
 </body>

@@ -8,12 +8,10 @@ if(isset($_POST["reset-password-submit"])) {
 	$passwordRepeat = $_POST["pwd-repeat"];
 	
 	if (empty($password) || empty($passwordRepeat)) {
-		
-	} else {
-		header("Location: ../create-new-foreleser-password.php?selector=".$selector."&validator".$validator."&passord=tom");
+		header("Location: ../create-new-foreleser-password.php?selector=".$selector."&validator=".$validator."&passord=tom");
 		exit();
-	} elseif ($passwordRepeat != $passwordRepeat) {
-		header("Location: ../create-new-foreleser-password.php?selector=".$selector."&validator".$validator."&passord=tom");
+	} else if ($password != $passwordRepeat) {
+		header("Location: ../create-new-foreleser-password.php?selector=".$selector."&validator=".$validator."&passord=pwdnotsame");
 		exit();
 	}
 	
@@ -21,17 +19,18 @@ if(isset($_POST["reset-password-submit"])) {
 	
 	require_once 'dbh.inc.php';
 	
-	$sql = "SELECT * FROM pwdreset WHERE pwdResetSelector =? AND pwdResetExpires >= ?;";
+	$sql = "SELECT * FROM pwdReset WHERE pwdResetSelector = ? AND pwdResetExpires >= ?;";
 	$stmt = mysqli_stmt_init($conn);
 	if (!mysqli_stmt_prepare($stmt, $sql)) {
 		die("There was an error!");
 	} else {
-		mysqli_stmt_bind_param($stmt, "s", $selector, $currentDate);
+		mysqli_stmt_bind_param($stmt, "si", $selector, $currentDate);
 		mysqli_stmt_execute($stmt);
 		
-		$result = mysqli_stmt_reset($stmt);
+		$result = mysqli_stmt_get_result($stmt);
 		if (!$row = mysqli_fetch_assoc($result)) {
-			die("Du trenger å gjøre det på nytt");
+			echo "Du trenger å gjøre det på nytt!";
+			exit();
 		} else {
 			
 			$tokenBin = hex2bin($validator);
@@ -52,7 +51,7 @@ if(isset($_POST["reset-password-submit"])) {
 					
 					mysqli_stmt_bind_param($stmt, "s", $tokenEmail);
 					mysqli_stmt_execute($stmt);
-					$result = mysqli_stmt_reset($stmt);
+					$result = mysqli_stmt_get_result($stmt);
 					
 					if (!$row = mysqli_fetch_assoc($result)) {
 						die("There was an error!");
@@ -69,7 +68,7 @@ if(isset($_POST["reset-password-submit"])) {
 							mysqli_stmt_bind_param($stmt, "ss", $hasedPwd, $tokenEmail);
 							mysqli_stmt_execute($stmt);
 							
-							$sql = "DELETE FROM pwdreset WHERE pwdResetEmail=?;";
+							$sql = "DELETE FROM pwdReset WHERE pwdResetEmail=?;";
 							$stmt = mysqli_stmt_init($conn);
 							if (!mysqli_stmt_prepare($stmt, $sql)) {
 								die("There was an error!");

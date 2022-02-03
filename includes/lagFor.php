@@ -12,32 +12,37 @@ if (isset($_POST["submit"])){
 		$emneListe = $_POST["emne_liste"];
 		$file = $_FILES["file"];
 		$fulltnavn = $navn.$etternavn;
-			echo "yes!";
+
 		 if(emptyInputSignupForeleser($navn, $etternavn, $e_post, $passord, $Bpassord, $file, $emneListe) !== false){
-			header ("location: ../Reg2For.php?error=emptyinput");
+			header ("location: ../Reg2for.php?error=emptyinput");
 			exit();
 		}
-		echo "yes!1";
+		
+		if (imgAllowed($file) !== false) {
+			header("location: ../Reg2for.php?error=imgInvalid");
+			exit();
+		}
+	
 		if (invalidUid($navn) !== false){
-			header("location: ../Reg2For.php?error=invalidUid");
+			header("location: ../Reg2for.php?error=invalidUid");
 			exit();
 			} 
-		echo "yes!2";
+		
 		if (invalidepost($e_post) !== false){
-			header("location: ../Reg2For.php?error=invalidepost");
+			header("location: ../Reg2for.php?error=invalidepost");
 			exit();
 		}
-		echo "yes!3";
+		
 		if (passordulike($passord, $Bpassord) !== false){
-			header("location: ../Reg2For.php?error=passordulike");
+			header("location: ../Reg2for.php?error=passordulike");
 			exit();
 		}
-		echo "yes!4";
+		
 		if (eposttattFor($conn, $e_post) !== false){
-			header("location: ../Reg2For.php?error=eposttatt");
+			header("location: ../Reg2for.php?error=eposttatt");
 			exit();
-			}  
-		echo "yes!5";
+		}	
+		
 	   createForeleser($conn, $navn, $etternavn, $e_post, $passord);
 		$userExists = eposttattFor ($conn, $e_post);
 		$foreleserid = $userExists["id"];
@@ -49,6 +54,7 @@ if (isset($_POST["submit"])){
 }
 	
 	else {
-			header("location: ../Reg2For.php");
+			header("location: ../Reg2for.php");
 			exit();
 	} 
+
